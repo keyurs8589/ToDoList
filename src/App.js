@@ -14,12 +14,13 @@ function App() {
         )
       : alert("Alert!!! Task previously assigned!!!");
   };
+
   return (
     <div className="App">
       <Header />
       <AddToDo addToDoTask={addToDoTask} />
       {toDo.map((task) => (
-        <TaskList key={task.id} />
+        <TaskList key={task.id} task={task} />
       ))}
       <Footer />
     </div>
