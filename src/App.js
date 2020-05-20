@@ -29,11 +29,10 @@ function App() {
         taskId === task.id ? { ...task, toDoTask: editedTask } : task
       )
     );
-    console.log(toDo);
   };
-  const deleteTask = taskId => {
-    setToDo(toDo.filter(task => task.id !== taskId ))
-  }
+  const deleteTask = (taskId) => {
+    setToDo(toDo.filter((task) => task.id !== taskId));
+  };
 
   return (
     <div className="App">

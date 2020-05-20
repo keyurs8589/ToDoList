@@ -6,9 +6,8 @@ function TaskList({ task, setTaskCompleted, updateTask, deleteTask }) {
   const [editFlag, setEditFlag] = useState(false);
   const editTaskHandler = (e) => setEditedTask(e.target.value);
   const saveEditTaskHandler = () => {
-    editedTask.trim() !== ""
-      ? updateTask(editedTask.trim())
-      : setEditedTask(task.toDoTask);
+    editedTask.trim() !== "" && updateTask(editedTask.trim());
+    setEditedTask(task.toDoTask);
     setEditFlag(false);
   };
   return (
@@ -28,7 +27,9 @@ function TaskList({ task, setTaskCompleted, updateTask, deleteTask }) {
         style={{ textDecoration: task.taskCompleted ? "line-through" : "" }}
       />
       <InputGroup.Append>
-        <Button variant="outline-secondary" onClick={deleteTask}>DELETE</Button>
+        <Button variant="outline-secondary" onClick={deleteTask}>
+          DELETE
+        </Button>
       </InputGroup.Append>
     </InputGroup>
   );

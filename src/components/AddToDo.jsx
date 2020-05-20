@@ -7,8 +7,7 @@ function AddToDo({ addToDoTask }) {
     setTask(e.target.value);
   };
   const saveTaskHandler = () => {
-    setTask(task.trim());
-    task !== "" && addToDoTask(task);
+    task.trim() !== "" && addToDoTask(task.trim());
     setTask("");
   };
   return (
