@@ -14,8 +14,25 @@ function App() {
         )
       : alert("Alert!!! Task previously assigned!!!");
   };
-  const setTaskCompleted = taskId => {
-    setToDo(toDo.map(task => task.id === taskId ? {...task, taskCompleted: !task.taskCompleted} : task))
+  const setTaskCompleted = (taskId) => {
+    setToDo(
+      toDo.map((task) =>
+        task.id === taskId
+          ? { ...task, taskCompleted: !task.taskCompleted }
+          : task
+      )
+    );
+  };
+  const updateTask = (editedTask, taskId) => {
+    setToDo(
+      toDo.map((task) =>
+        taskId === task.id ? { ...task, toDoTask: editedTask } : task
+      )
+    );
+    console.log(toDo);
+  };
+  const deleteTask = taskId => {
+    setToDo(toDo.filter(task => task.id !== taskId ))
   }
 
   return (
@@ -23,7 +40,13 @@ function App() {
       <Header />
       <AddToDo addToDoTask={addToDoTask} />
       {toDo.map((task) => (
-        <TaskList key={task.id} task={task} setTaskCompleted={() => setTaskCompleted(task.id)}/>
+        <TaskList
+          key={task.id}
+          task={task}
+          setTaskCompleted={() => setTaskCompleted(task.id)}
+          updateTask={(editedTask) => updateTask(editedTask, task.id)}
+          deleteTask={() => deleteTask(task.id)}
+        />
       ))}
       <Footer />
     </div>
