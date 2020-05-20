@@ -14,13 +14,16 @@ function App() {
         )
       : alert("Alert!!! Task previously assigned!!!");
   };
+  const setTaskCompleted = taskId => {
+    setToDo(toDo.map(task => task.id === taskId ? {...task, taskCompleted: !task.taskCompleted} : task))
+  }
 
   return (
     <div className="App">
       <Header />
       <AddToDo addToDoTask={addToDoTask} />
       {toDo.map((task) => (
-        <TaskList key={task.id} task={task} />
+        <TaskList key={task.id} task={task} setTaskCompleted={() => setTaskCompleted(task.id)}/>
       ))}
       <Footer />
     </div>
