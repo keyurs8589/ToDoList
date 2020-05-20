@@ -10,7 +10,7 @@ function TaskList({task, setTaskCompleted}) {
       </InputGroup.Prepend>
       <FormControl value={localTask} style={{textDecoration: task.taskCompleted ? "line-through" : ""}} />
       <InputGroup.Append>
-        <Button variant="outline-secondary">+</Button>
+        <Button variant="outline-secondary">DELETE</Button>
       </InputGroup.Append>
     </InputGroup>
   );
